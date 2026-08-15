@@ -1,4 +1,5 @@
 
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -20,8 +21,10 @@ print("\n--- Average by Gender ---")
 print(df.groupby("gender")[["math score", "reading score", "writing score"]].mean())
 
 # ── Visualization: Boxplot Gender vs Math ──
+plt.figure()
 sns.boxplot(x="gender", y="math score", data=df)
 plt.title("Math Score by Gender")
+plt.savefig("math_by_gender.png", bbox_inches="tight")
 plt.show()
 
 # ── Question 3: Does test preparation help? ──
@@ -29,8 +32,10 @@ print("\n--- Test Preparation Impact ---")
 print(df.groupby("test preparation course")[["math score", "reading score", "writing score"]].mean())
 
 # ── Visualization ──
+plt.figure()
 sns.boxplot(x="test preparation course", y="math score", data=df)
 plt.title("Impact of Test Preparation on Math Score")
+plt.savefig("test_prep_impact.png", bbox_inches="tight")
 plt.show()
 
 # ── Question 4: Performance by Race/Ethnicity ──
@@ -41,6 +46,7 @@ print(df.groupby("race/ethnicity")[["math score", "reading score", "writing scor
 plt.figure()
 sns.barplot(x="race/ethnicity", y="math score", data=df)
 plt.title("Math Score by Race/Ethnicity")
+plt.savefig("math_by_ethnicity.png", bbox_inches="tight")
 plt.show()
 
 # ── Question 5: Top 10 Students ──
@@ -54,6 +60,7 @@ print(top10)
 plt.figure()
 sns.histplot(df["average"], bins=20)
 plt.title("Distribution of Average Scores")
+plt.savefig("average_distribution.png", bbox_inches="tight")
 plt.show()
 
 # ── Correlation Heatmap ──
@@ -61,4 +68,5 @@ plt.figure()
 corr = df[["math score", "reading score", "writing score"]].corr()
 sns.heatmap(corr, annot=True, cmap="coolwarm")
 plt.title("Correlation Between Subjects")
+plt.savefig("correlation_heatmap.png", bbox_inches="tight")
 plt.show()
